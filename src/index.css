@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+@layer base {
+  :root,
+  [data-theme="mint-minimal"] {
+    --color-bg: #FFFFFF;
+    --color-surface: #FFFFFF;
+    --color-surface-subtle: #F8FAFC;
+    --color-primary: #047857;
+    --color-primary-hover: #065F46;
+    --color-primary-text: #FFFFFF;
+    --color-secondary: #D1FAE5;
+    --color-secondary-text: #047857;
+    --color-text-main: #1F2937;
+    --color-text-secondary: #475569;
+    --color-text-muted: #64748B;
+    --color-border: #E2E8F0;
+    --color-income: #047857;
+    --color-income-bg: #D1FAE5;
+    --color-expense: #DC2626;
+    --color-expense-bg: #FEF2F2;
+    --color-warning: #B45309;
+    --color-warning-bg: #FEF3C7;
+    --color-input-bg: #FFFFFF;
+    --color-input-border: #CBD5E1;
+    --color-focus: #047857;
+    --color-nav-active-bg: #D1FAE5;
+    --color-nav-active-text: #047857;
+    --color-track-bg: #E2E8F0;
+  }
+
+  [data-theme="midnight-luxe"] {
+    --color-bg: #09090B;
+    --color-surface: #27272A;
+    --color-surface-subtle: #18181B;
+    --color-primary: #A3E635;
+    --color-primary-hover: #84CC16;
+    --color-primary-text: #09090B;
+    --color-secondary: rgba(163, 230, 53, 0.15);
+    --color-secondary-text: #A3E635;
+    --color-text-main: #FAFAFA;
+    --color-text-secondary: #D4D4D8;
+    --color-text-muted: #A1A1AA;
+    --color-border: #3F3F46;
+    --color-income: #A3E635;
+    --color-income-bg: rgba(163, 230, 53, 0.15);
+    --color-expense: #F87171;
+    --color-expense-bg: rgba(248, 113, 113, 0.15);
+    --color-warning: #FACC15;
+    --color-warning-bg: rgba(250, 204, 21, 0.15);
+    --color-input-bg: #18181B;
+    --color-input-border: #52525B;
+    --color-focus: #A3E635;
+    --color-nav-active-bg: #3F3F46;
+    --color-nav-active-text: #A3E635;
+    --color-track-bg: #3F3F46;
+  }
+
+  html, body {
+    background-color: var(--color-bg) !important;
+    color: var(--color-text-main) !important;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .font-tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+}
+
+/* =========================================================================
+   THEME STYLES — MIDNIGHT LUXE (Theme B)
+   ========================================================================= */
+
+[data-theme="midnight-luxe"] {
+  color-scheme: dark;
+}
+
+[data-theme="midnight-luxe"] .app-viewport-bg {
+  background-color: #09090B !important;
+}
+
+[data-theme="midnight-luxe"] .bg-white,
+[data-theme="midnight-luxe"] .bg-\[\#FFFFFF\] {
+  background-color: #27272A !important;
+}
+
+[data-theme="midnight-luxe"] .bg-\[\#F8FAFC\] {
+  background-color: #18181B !important;
+}
+
+[data-theme="midnight-luxe"] .text-\[\#1F2937\] {
+  color: #FAFAFA !important;
+}
+
+[data-theme="midnight-luxe"] .text-\[\#475569\] {
+  color: #D4D4D8 !important;
+}
+
+[data-theme="midnight-luxe"] .text-\[\#64748B\] {
+  color: #A1A1AA !important;
+}
+
+[data-theme="midnight-luxe"] .border-\[\#E2E8F0\] {
+  border-color: #3F3F46 !important;
+}
+
+[data-theme="midnight-luxe"] .border-\[\#CBD5E1\] {
+  border-color: #52525B !important;
+}
+
+/* Primary actions: Lime background with dark contrasting text */
+[data-theme="midnight-luxe"] .bg-\[\#047857\] {
+  background-color: #A3E635 !important;
+  color: #09090B !important;
+}
+
+[data-theme="midnight-luxe"] .bg-\[\#047857\]:hover,
+[data-theme="midnight-luxe"] .hover\:bg-\[\#065f46\]:hover {
+  background-color: #84CC16 !important;
+  color: #09090B !important;
+}
+
+[data-theme="midnight-luxe"] .text-\[\#047857\] {
+  color: #A3E635 !important;
+}
+
+/* Secondary highlights: subtle lime tint */
+[data-theme="midnight-luxe"] .bg-\[\#D1FAE5\],
+[data-theme="midnight-luxe"] .bg-\[\#D1FAE5\]\/40,
+[data-theme="midnight-luxe"] .bg-\[\#D1FAE5\]\/60 {
+  background-color: rgba(163, 230, 53, 0.15) !important;
+  color: #A3E635 !important;
+}
+
+[data-theme="midnight-luxe"] .hover\:bg-\[\#D1FAE5\]\/40:hover,
+[data-theme="midnight-luxe"] .hover\:bg-\[\#D1FAE5\]:hover {
+  background-color: rgba(163, 230, 53, 0.25) !important;
+}
+
+/* Expenses and errors: Coral/red */
+[data-theme="midnight-luxe"] .text-\[\#DC2626\] {
+  color: #F87171 !important;
+}
+
+[data-theme="midnight-luxe"] .bg-red-50 {
+  background-color: rgba(248, 113, 113, 0.15) !important;
+  color: #F87171 !important;
+}
+
+[data-theme="midnight-luxe"] .border-red-200 {
+  border-color: rgba(248, 113, 113, 0.3) !important;
+}
+
+/* Form inputs & selects */
+[data-theme="midnight-luxe"] input,
+[data-theme="midnight-luxe"] select {
+  background-color: #18181B !important;
+  border-color: #52525B !important;
+  color: #FAFAFA !important;
+}
+
+[data-theme="midnight-luxe"] select option {
+  background-color: #27272A !important;
+  color: #FAFAFA !important;
+}
+
+/* Focus rings */
+[data-theme="midnight-luxe"] .focus-visible\:ring-\[\#047857\]:focus-visible,
+[data-theme="midnight-luxe"] .focus\:ring-\[\#047857\]:focus {
+  --tw-ring-color: #A3E635 !important;
+}
+
+/* Progress track */
+[data-theme="midnight-luxe"] .bg-\[\#E2E8F0\] {
+  background-color: #3F3F46 !important;
+}
+
+/* Active navigation item */
+[data-theme="midnight-luxe"] .nav-link-active {
+  background-color: #3F3F46 !important;
+  color: #A3E635 !important;
+}
+
+[data-theme="midnight-luxe"] .nav-link-active svg {
+  color: #A3E635 !important;
+}
+
+
+/* Subtle scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(16, 185, 129, 0.5);
+}
