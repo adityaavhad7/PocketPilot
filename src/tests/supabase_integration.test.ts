@@ -10,6 +10,7 @@ import {
   toSupabaseSettings,
   fromSupabaseSettings,
 } from '../lib/mappers';
+import { cleanEnvString, cleanUrl } from '../lib/supabase';
 import type { Transaction, Budget, SavingsGoal, UserSettings } from '../types';
 import { calculateDashboardMetrics, calculateStudentMetrics } from '../utils/calculations';
 import { formatCurrency } from '../utils/formatters';
@@ -202,5 +203,31 @@ describe('PocketPilot Supabase Integration & Schema Mappings', () => {
     assert.equal(studentMetrics.spentThisMonth, 12500);
     assert.equal(studentMetrics.remainingAllowance, 2500);
     assert.equal(studentMetrics.isOverspent, false);
+  });
+
+  test('Supabase environment variable sanitizer cleans quotes, whitespace, and trailing slashes', () => {
+    // Quoted strings commonly passed in Netlify dashboard
+    assert.equal(
+      cleanEnvString('"sb_publishable_S3YAKCEqPr6rpfAIJCpF0Q_4tHZeOLl"'),
+      'sb_publishable_S3YAKCEqPr6rpfAIJCpF0Q_4tHZeOLl'
+    );
+    assert.equal(
+      cleanEnvString("'sb_publishable_S3YAKCEqPr6rpfAIJCpF0Q_4tHZeOLl'"),
+      'sb_publishable_S3YAKCEqPr6rpfAIJCpF0Q_4tHZeOLl'
+    );
+    // Trailing whitespace and newlines
+    assert.equal(
+      cleanEnvString('  sb_publishable_S3YAKCEqPr6rpfAIJCpF0Q_4tHZeOLl \r\n '),
+      'sb_publishable_S3YAKCEqPr6rpfAIJCpF0Q_4tHZeOLl'
+    );
+    // Trailing slashes and quotes in URLs
+    assert.equal(
+      cleanUrl('"https://ymxcrjwoxuqsjohptmcb.supabase.co/"'),
+      'https://ymxcrjwoxuqsjohptmcb.supabase.co'
+    );
+    assert.equal(
+      cleanUrl('https://ymxcrjwoxuqsjohptmcb.supabase.co///'),
+      'https://ymxcrjwoxuqsjohptmcb.supabase.co'
+    );
   });
 });
